@@ -1,0 +1,21 @@
+wordpress:
+  image: wordpress:latest
+  mem_limit: 256MB
+  ports:
+    - "80:80"
+  links:
+    - mysql
+  environment:
+    WORDPRESS_DB_HOST: mysql
+    WORDPRESS_DB_USER: wordpressuser
+    WORDPRESS_DB_PASSWORD: password
+    WORDPRESS_DB_NAME: wordpress
+
+mysql:
+  image: mysql:5.7
+  mem_limit: 256MB
+  environment:
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpressuser
+    MYSQL_PASSWORD: password
+    MYSQL_RANDOM_ROOT_PASSWORD: '1'
